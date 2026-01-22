@@ -198,7 +198,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title,
     description,
     alternates: { canonical: `/tools/${tool.slug}` },
-    openGraph: { title, description, type: 'article', url: `/tools/${tool.slug}` },
-    twitter: { card: 'summary_large_image', title, description },
+    openGraph: { title, description, type: 'article', url: `/tools/${tool.slug}`, images: [{ url: `/tools/${tool.slug}/opengraph-image`, width: 1200, height: 630 }] },
+    twitter: { card: 'summary_large_image', title, description, images: [`/tools/${tool.slug}/opengraph-image`] },
   };
 }
