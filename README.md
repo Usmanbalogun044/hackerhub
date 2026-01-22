@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HackerHub
 
 A community hub for cybersecurity students: curated articles, tools, and resources — with ad monetization support. Built with Next.js (App Router) and Tailwind CSS.
@@ -39,3 +40,6 @@ Start with content quality, then apply to AdSense or developer-friendly networks
 
 ## Open Source
 Choose a license before publishing (MIT is common). Let me know if you want me to add MIT now.
+=======
+# hackerhub
+>>>>>>> 1015f8d1b0c8f52b9616b2da8e74764762be7f26
