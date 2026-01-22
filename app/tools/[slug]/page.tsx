@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AdSlot } from '../../../components/AdSlot';
 import { getToolDetail } from '../../../content/toolDetails';
@@ -25,6 +26,33 @@ export default function ToolDetail({ params }: { params: { slug: string } }) {
 
   return (
     <div className="grid lg:grid-cols-3 gap-8">
+      {/* JSON-LD: SoftwareApplication & BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: tool.name,
+            applicationCategory: tool.category,
+            operatingSystem: 'Windows, macOS, Linux',
+            url: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/tools/${tool.slug}`,
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Tools', item: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/tools` },
+              { '@type': 'ListItem', position: 2, name: tool.name, item: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/tools/${tool.slug}` },
+            ],
+          }),
+        }}
+      />
       <div className="lg:col-span-2">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold">{tool.name}</h1>
@@ -159,4 +187,18 @@ export default function ToolDetail({ params }: { params: { slug: string } }) {
       </aside>
     </div>
   );
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const tool = getToolDetail(params.slug);
+  if (!tool) return { title: 'Tool not found', robots: { index: false, follow: false } };
+  const title = `${tool.name} — ${tool.category}`;
+  const description = tool.overview || `${tool.name} ${tool.category} tool.`;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/tools/${tool.slug}` },
+    openGraph: { title, description, type: 'article', url: `/tools/${tool.slug}` },
+    twitter: { card: 'summary_large_image', title, description },
+  };
 }

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { articles } from '../../content/articles';
 
@@ -18,3 +19,19 @@ export default function Articles() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: 'Articles',
+  description: 'Beginner-friendly cybersecurity guides, tutorials, and explanations.',
+  alternates: { canonical: '/articles' },
+  openGraph: {
+    title: 'Articles | HackerHub',
+    description: 'Beginner-friendly cybersecurity guides, tutorials, and explanations.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Articles | HackerHub',
+    description: 'Beginner-friendly cybersecurity guides, tutorials, and explanations.',
+  },
+};

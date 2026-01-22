@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 export default function Resources() {
   const items = [
     { name: 'TryHackMe', url: 'https://tryhackme.com/', description: 'Hands-on cybersecurity labs' },
@@ -20,3 +22,9 @@ export default function Resources() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: 'Resources',
+  description: 'Practice platforms, frameworks, and references for cybersecurity learning.',
+  alternates: { canonical: '/resources' },
+};

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export default function Contribute() {
@@ -59,3 +60,9 @@ export default function Contribute() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: 'Contribute',
+  description: 'Add or improve tools and guides for the cybersecurity community.',
+  alternates: { canonical: '/contribute' },
+};
