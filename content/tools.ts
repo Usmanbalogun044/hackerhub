@@ -1,5 +1,9 @@
-export const tools = [
-  { slug: 'nmap', name: 'Nmap', description: 'Network scanning and discovery', category: 'Recon', url: 'https://nmap.org/' },
-  { slug: 'burpsuite', name: 'Burp Suite', description: 'Web security testing platform', category: 'Web', url: 'https://portswigger.net/burp' },
-  { slug: 'metasploit', name: 'Metasploit', description: 'Exploit development and execution', category: 'Exploit', url: 'https://www.metasploit.com/' },
-];
+import { toolDetails } from './toolDetails';
+
+export const tools = toolDetails.map(tool => ({
+  slug: tool.slug,
+  name: tool.name,
+  description: tool.overview,
+  category: tool.category,
+  url: tool.website || '',
+}));

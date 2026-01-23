@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { articles } from '../content/articles';
 import { tools } from '../content/tools';
 
+import ToolsListClient from './tools/ToolsListClient';
+
 export default function Home() {
   return (
     <div className="space-y-12">
@@ -60,15 +62,8 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold">Popular Tools</h2>
-        <div className="grid md:grid-cols-3 gap-6 mt-4">
-          {tools.slice(0,3).map(t => (
-            <Link key={t.slug} href={`/tools/${t.slug}`} className="block bg-neutral-900 border border-neutral-800 rounded-lg p-4 hover:border-brand-500">
-              <h3 className="font-semibold">{t.name}</h3>
-              <p className="text-neutral-400 text-sm mt-2">{t.description}</p>
-            </Link>
-          ))}
-        </div>
+        <h2 className="text-2xl font-semibold">Explore Tools</h2>
+        <ToolsListClient tools={tools} />
       </section>
     </div>
   );

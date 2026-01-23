@@ -61,3 +61,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     twitter: { card: 'summary_large_image', title, description, images: [`/articles/${article.slug}/opengraph-image`] },
   };
 }
+
+export async function generateStaticParams() {
+  return articles.map((article) => ({
+    slug: article.slug,
+  }));
+}
