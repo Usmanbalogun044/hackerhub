@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import Script from 'next/script';
@@ -35,13 +35,16 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: '/icon.svg',
+  },
+};
+
+export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
   ],
-  icons: {
-    icon: '/icon.svg',
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
