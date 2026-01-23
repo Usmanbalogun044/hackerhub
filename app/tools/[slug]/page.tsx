@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AdSlot } from '../../../components/AdSlot';
-import { getToolDetail } from '../../../content/toolDetails';
+import { getToolDetail, toolDetails } from '../../../content/toolDetails';
 
 function CopyButton({ text }: { text: string }) {
   return (

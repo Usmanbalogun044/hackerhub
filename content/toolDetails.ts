@@ -10,6 +10,7 @@ export type ToolDetail = {
     linux?: string;
     windows?: string;
     docker?: string;
+    web?: string;
   };
   usage: {
     basics: Array<{ title: string; command: string; description?: string }>;
