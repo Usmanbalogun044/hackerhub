@@ -2,7 +2,6 @@ import '../styles/globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
-import Script from 'next/script';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
@@ -53,10 +52,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         {adsenseClient && (
-          <Script
-            id="adsense-script"
+          <script
             async
-            strategy="afterInteractive"
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
             crossOrigin="anonymous"
           />
