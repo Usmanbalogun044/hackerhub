@@ -47,17 +47,16 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+
   return (
     <html lang="en">
       <head>
-        {adsenseClient && (
-          <script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-            crossOrigin="anonymous"
-          />
-        )}
+        <meta name="google-adsense-account" content="ca-pub-3777556489220566" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3777556489220566"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="bg-neutral-950 text-neutral-100 antialiased">
         <Navbar />

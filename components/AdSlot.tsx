@@ -27,14 +27,21 @@ export function AdSlot({ provider = 'placeholder', slotId, className, style }: P
     const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
     if (!client || !slotId) return null;
     return (
-      <ins
-        className={`adsbygoogle block ${className || ''}`}
-        style={style || { display: 'block' }}
-        data-ad-client={client}
-        data-ad-slot={slotId}
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
+      <>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}`}
+          crossOrigin="anonymous"
+        />
+        <ins
+          className={`adsbygoogle block ${className || ''}`}
+          style={style || { display: 'block' }}
+          data-ad-client={client}
+          data-ad-slot={slotId}
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      </>
     );
   }
 
